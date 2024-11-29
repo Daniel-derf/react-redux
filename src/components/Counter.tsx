@@ -7,9 +7,7 @@ import {
 import { AppDispatch, RootState } from "../state/store";
 import { useDispatch, useSelector } from "react-redux";
 
-type Props = {};
-
-const Counter = (props: Props) => {
+const Counter = () => {
   const count = useSelector((state: RootState) => state.counter.value);
   const dispatch = useDispatch<AppDispatch>();
 
@@ -17,7 +15,13 @@ const Counter = (props: Props) => {
     <div>
       <h2>{count}</h2>
       <div>
-        <button onClick={() => dispatch(incrementAsync(10))}>Increment</button>
+        <button onClick={() => dispatch(incrementAsync(10))}>
+          Async Increment
+        </button>
+        <button onClick={() => dispatch(incrementByAmount(15))}>
+          Increment by Amount
+        </button>
+        <button onClick={() => dispatch(increment())}>Increment</button>
         <button onClick={() => dispatch(decrement())}>Decrement</button>
       </div>
     </div>
